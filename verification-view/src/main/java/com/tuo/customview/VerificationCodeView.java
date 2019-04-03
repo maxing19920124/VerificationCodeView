@@ -342,7 +342,7 @@ public class VerificationCodeView extends RelativeLayout {
 
         @Override
         public void afterTextChanged(Editable editable) {
-            String inputStr = editable.toString();
+               String inputStr = editable.toString();
             if (!TextUtils.isEmpty(inputStr)) {
 
                 String[] strArray = inputStr.split("");
@@ -353,10 +353,13 @@ public class VerificationCodeView extends RelativeLayout {
                     if (i > mEtNumber) {
                         break;
                     }
-                    setText(strArray[i]);
-                    et.setText("");
+                    if (!TextUtils.isEmpty(strArray[i])){
+                        setText(strArray[i]);
+                    }
                 }
             }
+            editable.replace(0,editable.length(),"");
+           
         }
     }
 
